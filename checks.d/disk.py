@@ -195,10 +195,10 @@ class Disk(AgentCheck):
                 u"Timeout while retrieving the disk usage of `%s` mountpoint. Skipping...",
                 mountpoint
             )
-            return
+            return metrics
         except Exception as e:
             self.log.warn("Unable to get disk metrics for %s: %s", mountpoint, e)
-            return
+            return metrics
 
         if inodes.f_files != 0:
             total = inodes.f_files
